@@ -21,18 +21,18 @@ export function Navbar(params: any) {
                         About
                     </Nav.Link>
                 </Nav>
-                {cartQuantity > 0 && (
-                    <Button
-                        onClick={openCart}
-                        style={{
-                            width: "3rem",
-                            height: "3rem",
-                            position: "relative",
-                        }}
-                        variant="outline-primary"
-                        className="rounded-circle"
-                    >
-                        <FontAwesomeIcon icon={faCartShopping} />
+                <Button
+                    onClick={openCart}
+                    style={{
+                        width: "3rem",
+                        height: "3rem",
+                        position: "relative",
+                    }}
+                    variant="outline-primary"
+                    className="rounded-circle"
+                >
+                    <FontAwesomeIcon icon={faCartShopping} />
+                    {cartQuantity > 0 && (
                         <div
                             className="rounded-circle bg-danger d-flex justify-content-center align-item-center"
                             style={{
@@ -46,8 +46,8 @@ export function Navbar(params: any) {
                         >
                             {cartQuantity}
                         </div>
-                    </Button>
-                )}
+                    )}
+                </Button>
             </Container>
         </NavbarBs>
     );

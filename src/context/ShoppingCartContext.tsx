@@ -1,16 +1,11 @@
-import React, {
-    createContext,
-    ReactNode,
-    useContext,
-    useEffect,
-    useState,
-} from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
+import ShoppingCart from "../components/ShoppingCart";
 
 interface ShoppingCartProviderProps {
     children: ReactNode;
 }
 
-interface CartItem {
+export interface CartItem {
     id: number;
     quantity: number;
 }
@@ -102,6 +97,7 @@ export const ShoppingCartProvider = ({
             }}
         >
             {children}
+            <ShoppingCart isOpen={isOpen} />
         </ShoppingCartContext.Provider>
     );
 };
