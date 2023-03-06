@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/shopping_cart/">
       <App />
     </BrowserRouter>
   </React.StrictMode>
