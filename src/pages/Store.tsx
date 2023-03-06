@@ -1,35 +1,49 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import { Col, Row } from "react-bootstrap";
+import data from "../data/items.json";
+import StoreItem from "../components/StoreItem";
 
-interface Props {
-    [key: string]: string;
+export interface JSON_DATA {
+    id: number;
+    name: string;
+    price: number;
+    imgUrl: string;
 }
 
 export function Store() {
-    const [data, setData] = useState<[Props]>();
+    // const [data, setData] = useState<[JSON_DATA]>();
 
-    useEffect(() => {
-        return () => {
-            const fetchData = async () => {
-                try {
-                    await axios({
-                        method: "get",
-                        url: "https://jsonplaceholder.typicode.com/posts",
-                    }).then((response) => setData(response.data));
-                } catch (error) {
-                    console.log(error);
-                }
-            };
-            fetchData();
-        };
-    }, []);
+    // const fetchData = useCallback(async () => {
+    //     try {
+    //         await axios({
+    //             method: "get",
+    //             url: "https://jsonplaceholder.typicode.com/photos",
+    //             params: {
+    //                 _limit: 10,
+    //             },
+    //         }).then((response) => setData(response.data));
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }, []);
+
+    // useEffect(() => {
+    //     fetchData();
+    //     console.log(data);
+    // }, []);
 
     return (
-        <div>
-            {data &&
-                data.map((item: Props) => {
-                    return <p key={item.id}>{item.title}</p>;
-                })}
-        </div>
+        <>
+            <h1>store</h1>
+            <Row md={2} xs={1} lg={3} className="g-3">
+                {data &&
+                    data.map((item: JSON_DATA) => (
+                        <Col key={item.id}>
+                            <StoreItem {...item} />
+                        </Col>
+                    ))}
+            </Row>
+        </>
     );
 }
